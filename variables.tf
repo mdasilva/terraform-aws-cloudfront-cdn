@@ -237,7 +237,6 @@ variable "parent_zone_name" {
 }
 
 variable "cache_behavior" {
-  type        = list(string)
   description = "An ordered list of cache behaviors resource for this distribution. List from top to bottom in order of precedence. The topmost cache behavior will have precedence 0."
   default     = []
 }
