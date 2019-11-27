@@ -57,6 +57,17 @@ variable "custom_error_response" {
   default = []
 }
 
+variable "lambda_function_association" {
+  type = list(object({
+    event_type   = string
+    include_body = bool
+    lambda_arn   = string
+  }))
+
+  description = "A config block that triggers a lambda function with specific actions"
+  default     = []
+}
+
 variable "web_acl_id" {
   description = "(Optional) - Web ACL ID that can be attached to the Cloudfront distribution"
   default     = ""

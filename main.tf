@@ -109,6 +109,15 @@ resource "aws_cloudfront_distribution" "default" {
     default_ttl            = var.default_ttl
     min_ttl                = var.min_ttl
     max_ttl                = var.max_ttl
+
+    dynamic "lambda_function_association" {
+      for_each = var.lambda_function_association
+      content {
+        event_type   = lambda_function_association.value.event_type
+        include_body = lookup(lambda_function_association.value, "include_body", null)
+        lambda_arn   = lambda_function_association.value.lambda_arn
+      }
+    }
   }
 
   dynamic "ordered_cache_behavior" {
