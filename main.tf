@@ -51,6 +51,8 @@ resource "aws_cloudfront_distribution" "default" {
 
   aliases = var.aliases
 
+  wait_for_deployment = var.wait_for_deployment
+
   dynamic "custom_error_response" {
     for_each = var.custom_error_response
     content {

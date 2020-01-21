@@ -252,3 +252,8 @@ variable "cache_behavior" {
   default     = []
 }
 
+variable "wait_for_deployment" {
+  type        = bool
+  default     = false
+  description = "Determines whether Terraform should wait until distribution status changes from InProgress to Deployed"
+}
